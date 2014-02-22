@@ -1,4 +1,4 @@
-__author__ = 'Benjamin'
+__author__ = 'Benjamin Eggert'
 
 # I want to create a calendar class which allows me to enter an appointment
 # on a specific day and time. The appointments can have a duration.
