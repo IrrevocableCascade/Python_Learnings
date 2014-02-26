@@ -12,7 +12,7 @@ race_url = domain + race_entry
 response = request.urlopen(race_url)
 race_data = json.loads(response.read().decode('utf-8'))
 
-race_data = race_data['match']['match_entry']
+race_data = race_data['match']['match_result']
 drivers = []
 ids = []
 
