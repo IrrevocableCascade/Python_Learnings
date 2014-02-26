@@ -1,4 +1,4 @@
-__author__ = 'Benjamin'
+__author__ = 'Irrevocable Cascade'
 
 from urllib import request
 import json

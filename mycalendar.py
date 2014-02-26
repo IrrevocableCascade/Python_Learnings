@@ -1,4 +1,4 @@
-__author__ = 'Benjamin Eggert'
+__author__ = 'Irrevocable Cascade'
 
 
 """

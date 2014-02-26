@@ -1,11 +1,5 @@
-__author__ = 'Benjamin'
+__author__ = 'Irrevocable Cascade'
 
 """
 This is used to mess around
 """
-
-import calendar
-
-c = calendar
-
-print(c.isleap(2014))

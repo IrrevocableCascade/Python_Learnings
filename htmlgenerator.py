@@ -1,4 +1,4 @@
-__author__ = 'Benjamin'
+__author__ = 'Irrevocable Cascade'
 
 """
 This will create valid HTML 5 files
