@@ -25,7 +25,7 @@ for entry in race_data:
             response = request.urlopen(domain + driver_info + str(entry[item]))
             person_data = json.loads(response.read().decode('utf-8'))
             driver["person_name"] = person_data["firstname"] + ' ' + person_data["surname"]
-            driver["country_id"] = person_data["country"]["id"]
+            driver["country_id"] = person_data["country"]
             ids.append(entry[item])
 
         if item == "team_id":
