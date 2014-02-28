@@ -279,16 +279,3 @@ class HTMLCalendar(MyCalendar):
             code += '\n<td>' + self.printmonth(month, withyear) + '</td>'
         code += '\n</table>'
         return code
-
-
-c = []
-s = ''
-# for i in range(2000,2002):
-# 	d = HTMLCalendar(i)
-# 	c.append(d.makeyear(5,True))
-# 	d = None
-#
-# print(c,'\n')
-
-c = HTMLCalendar("sex")
-print(c.printyear(5,True))
