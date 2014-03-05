@@ -18,22 +18,23 @@ ids = []
 
 # Filter race_date so we only get person_id and team_id, then add the name and team strings based on the ids.
 for entry in race_data:
-	driver = {}
-	for item in entry:
-		if item == "person_id":
-			driver[item] = entry[item]
-			response = request.urlopen(domain + driver_info + str(entry[item]))
-			person_data = json.loads(response.read().decode('utf-8'))
-			driver["person_name"] = person_data["firstname"] + ' ' + person_data["surname"]
-			ids.append(entry[item])
+    driver = {}
+    for item in entry:
+        if item == "person_id":
+            driver[item] = entry[item]
+            response = request.urlopen(domain + driver_info + str(entry[item]))
+            person_data = json.loads(response.read().decode('utf-8'))
+            driver["person_name"] = person_data["firstname"] + ' ' + person_data["surname"]
+            driver["country_id"] = person_data["country"]
+            ids.append(entry[item])
 
-		if item == "team_id":
-			driver[item] = entry[item]
-			response = request.urlopen(domain + team_info + str(entry[item]))
-			team_data = json.loads(response.read().decode('utf-8'))
-			driver["team_name"] = team_data["name"]
+        if item == "team_id":
+            driver[item] = entry[item]
+            response = request.urlopen(domain + team_info + str(entry[item]))
+            team_data = json.loads(response.read().decode('utf-8'))
+            driver["team_name"] = team_data["name"]
 
-	drivers.append(driver)
+    drivers.append(driver)
 
 # Get a list of unique person_ids
 person_ids = list(set(ids))
@@ -41,12 +42,12 @@ drivers_clean = []
 
 # Remove the duplicates
 for entry in drivers:
-	for item in entry:
-		if item == 'person_id' and entry[item] in person_ids:
-			drivers_clean.append(entry)
-			person_ids.remove(entry[item])
+    for item in entry:
+        if item == 'person_id' and entry[item] in person_ids:
+            drivers_clean.append(entry)
+            person_ids.remove(entry[item])
 
 with open('driver_mapping.json', 'wb') as fp:
-	fp.write(json.dumps(drivers_clean, sort_keys=True, indent=1).encode('utf-8'))
+    fp.write(json.dumps(drivers_clean, sort_keys=True, indent=1).encode('utf-8'))
 
 
