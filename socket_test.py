@@ -1,4 +1,4 @@
-""" Tutorialspoint code
+""" Tutorialspoint code. Not mine.
 """
 
 import socket               # Import socket module
