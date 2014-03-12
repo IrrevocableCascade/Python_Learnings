@@ -76,8 +76,24 @@ USE_L10N = True
 
 USE_TZ = True
 
+# Template Dirs
+
+SETTINGS_DIR = os.path.dirname(__file__)
+
+PROJECT_PATH = os.path.join(SETTINGS_DIR, os.pardir)
+PROJECT_PATH = os.path.abspath(PROJECT_PATH)
+
+TEMPLATE_PATH = os.path.join(PROJECT_PATH, 'templates')
+
+TEMPLATE_DIRS = (TEMPLATE_PATH,)
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
+STATIC_PATH = os.path.join(PROJECT_PATH, 'static')
+
 STATIC_URL = '/static/'
+
+STATICFILES_DIRS = (STATIC_PATH,)
+
