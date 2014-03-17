@@ -27,6 +27,19 @@ TEMPLATE_DEBUG = True
 ALLOWED_HOSTS = []
 
 
+# Paths
+
+SETTINGS_DIR = os.path.dirname(__file__)
+
+PROJECT_PATH = os.path.join(SETTINGS_DIR, os.pardir)
+
+PROJECT_PATH = os.path.abspath(PROJECT_PATH)
+
+DATABASE_PATH = os.path.join(PROJECT_PATH, 'rango.db')
+
+STATIC_PATH = os.path.join(PROJECT_PATH, 'static')
+
+
 # Application definition
 
 INSTALLED_APPS = (
@@ -59,7 +72,7 @@ WSGI_APPLICATION = 'tango_with_django_project.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'NAME': DATABASE_PATH,
     }
 }
 
@@ -78,10 +91,6 @@ USE_TZ = True
 
 # Template Dirs
 
-SETTINGS_DIR = os.path.dirname(__file__)
-
-PROJECT_PATH = os.path.join(SETTINGS_DIR, os.pardir)
-PROJECT_PATH = os.path.abspath(PROJECT_PATH)
 
 TEMPLATE_PATH = os.path.join(PROJECT_PATH, 'templates')
 
@@ -91,9 +100,11 @@ TEMPLATE_DIRS = (TEMPLATE_PATH,)
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
-STATIC_PATH = os.path.join(PROJECT_PATH, 'static')
-
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = (STATIC_PATH,)
+
+MEDIA_URL = '/media/'
+
+MEDIA_ROOT = os.path.join(PROJECT_PATH, 'media')
 
