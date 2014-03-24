@@ -4,7 +4,7 @@ from urllib import request
 import json
 
 domain = 'http://ran-json.c.ergebnis-dienst.de'
-race_entry = '/match/ma1710560/'
+race_entry = '/match/ma2188374/'
 driver_info = '/person/pe'
 team_info = '/team/te'
 race_url = domain + race_entry
@@ -25,7 +25,7 @@ for entry in race_data:
             response = request.urlopen(domain + driver_info + str(entry[item]))
             person_data = json.loads(response.read().decode('utf-8'))
             driver["person_name"] = person_data["firstname"] + ' ' + person_data["surname"]
-            driver["country_id"] = person_data["country"]
+            driver["country"] = person_data["country"]
             ids.append(entry[item])
 
         if item == "team_id":
