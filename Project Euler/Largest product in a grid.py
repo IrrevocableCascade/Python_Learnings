@@ -2,6 +2,8 @@ __author__ = 'Irrevocable Cascade'
 
 """In the 20×20 grid below, four numbers along a diagonal line have been marked in red."""
 
+import time
+
 the_grid = [8, 2, 22, 97, 38, 15, 0, 40, 0, 75, 4, 5, 7, 78, 52, 12, 50, 77, 91, 8,
             49, 49, 99, 40, 17, 81, 18, 57, 60, 87, 17, 40, 98, 43, 69, 48, 4, 56, 62, 0,
             81, 49, 31, 73, 55, 79, 14, 29, 93, 71, 40, 67, 53, 88, 30, 3, 49, 13, 36, 65,
@@ -25,6 +27,7 @@ the_grid = [8, 2, 22, 97, 38, 15, 0, 40, 0, 75, 4, 5, 7, 78, 52, 12, 50, 77, 91,
 
 
 def horizontal_product(the_grid):
+	start = time.time()
 	grid = list(the_grid)
 	product = 0
 	largest = 0
@@ -37,11 +40,12 @@ def horizontal_product(the_grid):
 				largest = product
 
 		del grid[0]
-
-	return largest
+	end = time.time()
+	return largest, end - start
 
 
 def vertical_product(the_grid):
+	start = time.time()
 	grid = list(the_grid)
 	product = 0
 	largest = 0
@@ -56,11 +60,12 @@ def vertical_product(the_grid):
 					largest = product
 
 		del grid[:20]
-
-	return largest
+	end = time.time()
+	return largest, end - start
 
 
 def diagonal_product_top(the_grid):
+	start = time.time()
 	grid = list(the_grid)
 	product = 0
 	largest = 0
@@ -78,18 +83,19 @@ def diagonal_product_top(the_grid):
 			if a != 0 and b != 0 and c != 0 and d != 0:
 
 				product = a * b * c * d
-
+				
 				if product > largest:
 					largest = product
 
 			start_position += 20
 
 		offset += 1
-
-	return largest
+	end = time.time()
+	return largest, end - start
 
 
 def diagonal_product_bottom(the_grid):
+	start = time.time()
 	grid = list(the_grid)
 	product = 0
 	largest = 0
@@ -113,11 +119,11 @@ def diagonal_product_bottom(the_grid):
 			start_position -= 20
 
 		offset += 1
+	end = time.time()
+	return largest, end - start
 
-	return largest
 
-
-print(horizontal_product(the_grid))
-print(vertical_product(the_grid))
-print(diagonal_product_top(the_grid))
-print(diagonal_product_bottom(the_grid))
+print("Largest horizontal is %d required %10.20f seconds" % horizontal_product(the_grid))
+print("Largest vertical is %d required %10.20f seconds" % vertical_product(the_grid))
+print("Largest diagonal top is %d required %10.20f seconds" % diagonal_product_top(the_grid))
+print("Largest diagonal bottom is %d required %10.20f seconds" % diagonal_product_bottom(the_grid))
