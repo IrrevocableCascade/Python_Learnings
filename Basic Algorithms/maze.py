@@ -39,7 +39,7 @@ class Maze:
 		                            (columnsInMaze - 1) / 2 + .5, (rowsInMaze - 1) / 2 + .5)
 
 	def drawMaze(self):
-		self.t.speed(10)
+		self.t.speed(0)
 		for y in range(self.rowsInMaze):
 			for x in range(self.columnsInMaze):
 				if self.mazelist[y][x] == OBSTACLE:
@@ -114,8 +114,8 @@ def searchFrom(maze, startRow, startColumn):
 	maze.updatePosition(startRow, startColumn, TRIED)
 	# Otherwise, use logical short circuiting to try each direction
 	# in turn (if needed)
-	found = searchFrom(maze, startRow - 1, startColumn) or \
-	        searchFrom(maze, startRow + 1, startColumn) or \
+	found = searchFrom(maze, startRow + 1, startColumn) or \
+	        searchFrom(maze, startRow - 1, startColumn) or \
 	        searchFrom(maze, startRow, startColumn - 1) or \
 	        searchFrom(maze, startRow, startColumn + 1)
 	if found:

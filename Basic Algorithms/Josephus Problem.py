@@ -10,34 +10,15 @@ may read the full story of Josephus and get math explanation of the problem in w
 Your task is to determine for given number of people N and constant step K the position of a person who remains the last
  - i.e. the safe position"""
 
-import math
 
 def josephus(n, k):
-	people = list(range(1, n + 1))
-	kill_list = []
-	last_index = 0
-	start_offset = 1
-
-	while len(people) >= 1:
-		if last_index % k != 0:
-			start_offset = n - last_index
-			last_index = 0
-
-		for i in range(k - start_offset, len(people) - 1, k):
-				if i + last_index < people[len(people) - 1]:
-					kill_list.insert(0, i)
-				else:
-					kill_list.insert(0, math.ceil(i % k) - 1)
-					last_index = 0
-
-		last_index = i
+    ls = list(range(1, n + 1))
+    k -= 1
+    i = k
+    while len(ls) > 1:
+        del ls[i]
+        i = (i + k) % len(ls)
+    print(ls[0])
 
 
-		for j in kill_list:
-			del people[j]
-
-		del kill_list[:]
-
-
-
-josephus(10,3)
+print(josephus(10, 3))
