@@ -22,14 +22,8 @@ flatten_iter = itertools.chain.from_iterable
 def checksum(list):
 	result = 0
 	for item in list:
-		result = (((result + item) * 113) % 10000007)
+		result = (result + int(item)) * 113 % 10000007
 
 	return result
 
-
-def checksum2(list):
-	result = 0
-	return ((((result + i) * 113) % 10000007) for i in list)
-
-
-print(checksum2([96327,77073650,8775,4809,7,63001258,57,648672,97,2121,654,37134902,94244897,10,247,822504,43,596459,9,4,9162448,9,62563,76770,8787304,999311570,75944]))
+print(checksum(['1', '2', '3', '4', '5', '6']))
